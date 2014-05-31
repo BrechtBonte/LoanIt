@@ -1,0 +1,14 @@
+/Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/MonoAndroid,Version=v2.2.AssemblyAttribute.cs
+/Users/brechtbonte/Projects/LoanIt/LoanIt/bin/Debug/LoanIt.dll.mdb
+/Users/brechtbonte/Projects/LoanIt/LoanIt/bin/Debug/LoanIt.dll
+/Users/brechtbonte/Projects/LoanIt/LoanIt/bin/Debug/LoanIt.LoanIt.apk
+/Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/android/bin/LoanIt.LoanIt.apk
+/Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/res/layout/main.xml
+/Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/res/values/strings.xml
+/Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/res/drawable/icon.png
+/Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/R.cs.flag
+/Users/brechtbonte/Projects/LoanIt/LoanIt/bin/Debug/LoanIt.LoanIt-Signed.apk
+/Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/uploadflags.txt
+/Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/LoanIt.dll
+/Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/LoanIt.dll.mdb
+/Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/MonoAndroid,Version=v4.4.AssemblyAttribute.cs

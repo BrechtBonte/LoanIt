@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="LoanIt/Repository.cs">
+    <Files>
+      <File FileName="LoanIt/MainActivity.cs" Line="34" Column="27" />
+      <File FileName="LoanIt/Person.cs" Line="24" Column="3" />
+      <File FileName="LoanIt/Loan.cs" Line="25" Column="4" />
+      <File FileName="LoanIt/Repository.cs" Line="78" Column="30" />
+      <File FileName="LoanIt/Resources/values/Strings.xml" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.LoanIt MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" AndroidDeviceId-Debug="emulator-5554" />
+</Properties>
