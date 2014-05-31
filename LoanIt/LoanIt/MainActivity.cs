@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Graphics;
 using System.IO;
 using LoanIt.Core;
 
@@ -25,62 +26,39 @@ namespace LoanIt
 
 			Repository repository = Repository.GetInstance();
 
-			Loan[] loans = repository.GetAllLoans();
-			Console.WriteLine("Current Loans:");
-			for (int i = 0; i < loans.Length; i++) {
-				if (i == loans.Length - 1) {
-					Console.Write("\\- ");
-				} else {
-					Console.Write("|- ");
-				}
-				Console.WriteLine(loans[i].ToString());
-			}
-			Console.WriteLine("");
-
-			Person[] people = repository.GetAllPeople();
-			Console.WriteLine("Current people:");
-			for (int i = 0; i < people.Length; i++) {
-				if (i == people.Length - 1) {
-					Console.Write("\\- ");
-				} else {
-					Console.Write("|- ");
-				}
-				Console.WriteLine(people[i].ToString());
-			}
-			Console.WriteLine("");
-
-			Console.WriteLine(String.Format("total: {0}", repository.GetTotalAmount()));
-
 			// Get our button from the layout resource,
 			// and attach an event to it
-			Button button = FindViewById<Button>(Resource.Id.myButton);
+			/*Button button = FindViewById<Button>(Resource.Id.myButton);
 
 			button.Click += delegate {
-				Console.WriteLine("clicked");
 				Person testPerson = repository.GetPersonByName("testName");
 				if (testPerson == null) {
 					testPerson = new Person("testName");
 					repository.InsertObject(testPerson);
-					Console.WriteLine(String.Format("Added person {0}", testPerson.ToString()));
-				} else {
-					Console.WriteLine(String.Format("found person {0}", testPerson.ToString()));
 				}
 				Loan loan = new Loan(1, true, testPerson, "");
 				repository.InsertObject(loan);
-				Console.WriteLine(String.Format("Added loan {0}", loan.ToString()));
 				UpdateLoanCount();
-			};
+			};*/
 
 			UpdateLoanCount();
 		}
 
 		protected void UpdateLoanCount()
 		{
-			TextView totalLoans = FindViewById<TextView>(Resource.Id.textView1);
-			totalLoans.SetText(
-				Repository.GetInstance().GetTotalAmount().ToString(),
-				TextView.BufferType.Normal
-			);
+			TextView balanceText = FindViewById<TextView>(Resource.Id.balanceText);
+			int balance = Repository.GetInstance().GetTotalAmount();
+
+			if (balance == 0) {
+				balanceText.SetText(Resource.String.balanceEven, TextView.BufferType.Normal);
+				balanceText.SetTextColor(Color.Magenta);
+			} else {
+				balanceText.SetText(
+					String.Format("{0} € {1}", balance < 0 ? '-' : '+', Math.Abs(balance / 100.0)),
+					TextView.BufferType.Normal
+				);
+				balanceText.SetTextColor(balance < 0 ? Color.Red : Color.Green);
+			}
 		}
 
 		protected void CheckDatabaseFile()

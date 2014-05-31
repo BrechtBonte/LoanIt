@@ -60,11 +60,11 @@ namespace LoanIt
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
-			
 			// aapt resource value: 0x7f050001
-			public const int textView1 = 2131034113;
+			public const int balanceText = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int linearLayout1 = 2131034112;
 			
 			static Id()
 			{
@@ -95,11 +95,14 @@ namespace LoanIt
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int addLoan = 2130968576;
+			// aapt resource value: 0x7f040002
+			public const int app_name = 2130968578;
 			
 			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			public const int balanceEven = 2130968577;
+			
+			// aapt resource value: 0x7f040000
+			public const int currentBalance = 2130968576;
 			
 			static String()
 			{

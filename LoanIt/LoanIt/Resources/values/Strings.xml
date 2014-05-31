@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="addLoan">Add a loan with amount 1</string>
+	<string name="currentBalance">Current balance:</string>
+	<string name="balanceEven">Even</string>
 	<string name="app_name">LoanIt</string>
 </resources>

@@ -59,36 +59,26 @@ namespace LoanIt
 		{
 			var table = this.GetConnection().Table<Loan>();
 			int owedToUser = table.Where(l => l.IsOwedToUser == true).Sum(l => l.Amount);
-			Console.WriteLine(String.Format("Owed To: {0}", owedToUser.ToString()));
 			int owedByUser = table.Where(l => l.IsOwedToUser == false).Sum(l => l.Amount);
-			Console.WriteLine(String.Format("Owed By: {0}", owedByUser.ToString()));
 			return owedToUser - owedByUser;
 		}
 
 		public Person GetPersonByName(string name)
 		{
 			var table = this.GetConnection().Table<Person>();
-			return (
-			    from p in table
-				where p.Name == name
-				select p
-			).FirstOrDefault();
+			return table.Where(p => p.Name == name).FirstOrDefault();
 		}
 
 		public Loan[] GetAllLoans()
 		{
 			var table = this.GetConnection().Table<Loan>();
-			return (from l in table
-					orderby l.DateAdded descending
-					select l).ToArray();
+			return table.OrderByDescending(l => l.DateAdded).ToArray();
 		}
 
 		public Person[] GetAllPeople()
 		{
 			var table = this.GetConnection().Table<Person>();
-			return (from p in table
-					orderby p.Name
-					select p).ToArray();
+			return table.OrderBy(p => p.Name).ToArray();
 		}
 	}
 }

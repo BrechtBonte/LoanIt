@@ -3,16 +3,21 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <Button
-        android:id="@+id/myButton"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/addLoan" />
-    <TextView
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:layout_marginBottom="9.5dp" />
+        android:layout_height="fill_parent"
+        android:id="@+id/linearLayout1">
+        <TextView
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:text="@string/currentBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:gravity="right"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/balanceText" />
+    </LinearLayout>
 </LinearLayout>

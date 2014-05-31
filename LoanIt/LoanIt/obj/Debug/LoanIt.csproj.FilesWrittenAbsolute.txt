@@ -12,3 +12,16 @@
 /Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/LoanIt.dll
 /Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/LoanIt.dll.mdb
 /Users/brechtbonte/Projects/LoanIt/LoanIt/obj/Debug/MonoAndroid,Version=v4.4.AssemblyAttribute.cs
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/MonoAndroid,Version=v4.4.AssemblyAttribute.cs
+/sites/LoanIt/LoanIt/LoanIt/bin/Debug/LoanIt.dll.mdb
+/sites/LoanIt/LoanIt/LoanIt/bin/Debug/LoanIt.dll
+/sites/LoanIt/LoanIt/LoanIt/bin/Debug/LoanIt.LoanIt.apk
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/android/bin/LoanIt.LoanIt.apk
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/res/layout/main.xml
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/res/values/strings.xml
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/res/drawable/icon.png
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/R.cs.flag
+/sites/LoanIt/LoanIt/LoanIt/bin/Debug/LoanIt.LoanIt-Signed.apk
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/uploadflags.txt
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/LoanIt.dll
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/LoanIt.dll.mdb
