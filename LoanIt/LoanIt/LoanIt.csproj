@@ -52,6 +52,7 @@
     <Compile Include="Person.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="Helpers\NumberFormatter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -62,9 +63,13 @@
     <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\ic_action_refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <AndroidAsset Include="Assets\db.sqlite" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>

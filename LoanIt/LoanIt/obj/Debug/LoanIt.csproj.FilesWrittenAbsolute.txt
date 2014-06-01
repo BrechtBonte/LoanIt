@@ -25,3 +25,4 @@
 /sites/LoanIt/LoanIt/LoanIt/obj/Debug/uploadflags.txt
 /sites/LoanIt/LoanIt/LoanIt/obj/Debug/LoanIt.dll
 /sites/LoanIt/LoanIt/LoanIt/obj/Debug/LoanIt.dll.mdb
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/res/drawable/ic_action_refresh.png

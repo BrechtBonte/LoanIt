@@ -9,12 +9,18 @@ using Android.OS;
 using Android.Graphics;
 using System.IO;
 using LoanIt.Core;
+using LoanIt.Helpers;
+using Android.Text;
+using Java.Lang;
+using Android.Views.InputMethods;
 
 namespace LoanIt
 {
 	[Activity(Label = "LoanIt", MainLauncher = true)]
 	public class MainActivity : Activity
 	{
+		private int addBalance = 0;
+
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
@@ -24,24 +30,48 @@ namespace LoanIt
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.Main);
 
-			Repository repository = Repository.GetInstance();
-
-			// Get our button from the layout resource,
-			// and attach an event to it
-			/*Button button = FindViewById<Button>(Resource.Id.myButton);
-
-			button.Click += delegate {
-				Person testPerson = repository.GetPersonByName("testName");
-				if (testPerson == null) {
-					testPerson = new Person("testName");
-					repository.InsertObject(testPerson);
-				}
-				Loan loan = new Loan(1, true, testPerson, "");
-				repository.InsertObject(loan);
-				UpdateLoanCount();
-			};*/
-
 			UpdateLoanCount();
+			InitAddForm();
+		}
+
+		protected void InitAddForm()
+		{
+			Button  loanLower = FindViewById<Button>(Resource.Id.loanLowerButton),
+					loanHigher = FindViewById<Button>(Resource.Id.loanHigherButton),
+					loanSwitch = FindViewById<Button>(Resource.Id.loanSwitchButton);
+			loanLower.Click += delegate {
+				CheckFocus();
+				addBalance -= 100;
+				UploadLoanAddInput();
+			};
+			loanHigher.Click += delegate {
+				CheckFocus();
+				addBalance += 100;
+				UploadLoanAddInput();
+			};
+			loanSwitch.Click += delegate {
+				CheckFocus();
+				addBalance *= -1;
+				UploadLoanAddInput();
+			};
+
+			EditText loanInput = FindViewById<EditText>(Resource.Id.loanAddInput);
+			loanInput.FocusChange += delegate(object sender, View.FocusChangeEventArgs e) {
+				if (e.HasFocus) {
+					loanInput.SetText("", TextView.BufferType.Editable);
+				} else {
+					LoadInputValue(loanInput);
+				}
+			};
+
+			UploadLoanAddInput();
+		}
+
+		protected void UploadLoanAddInput()
+		{
+			EditText loanInput = FindViewById<EditText>(Resource.Id.loanAddInput);
+			loanInput.SetText(NumberFormatter.FormatBalance(addBalance), TextView.BufferType.Editable);
+			loanInput.SetTextColor(addBalance == 0 ? Color.Orange : (addBalance < 0 ? Color.Red : Color.Green));
 		}
 
 		protected void UpdateLoanCount()
@@ -54,11 +84,35 @@ namespace LoanIt
 				balanceText.SetTextColor(Color.Magenta);
 			} else {
 				balanceText.SetText(
-					String.Format("{0} € {1}", balance < 0 ? '-' : '+', Math.Abs(balance / 100.0)),
+					NumberFormatter.FormatBalance(balance),
 					TextView.BufferType.Normal
 				);
 				balanceText.SetTextColor(balance < 0 ? Color.Red : Color.Green);
 			}
+		}
+
+		protected void CheckFocus()
+		{
+			EditText loanInput = FindViewById<EditText>(Resource.Id.loanAddInput);
+			if (loanInput.IsFocused) {
+				LoadInputValue(loanInput);
+
+				InputMethodManager imm = (InputMethodManager) GetSystemService(Context.InputMethodService);
+				imm.HideSoftInputFromWindow(loanInput.WindowToken, 0);
+
+				LinearLayout loanAddLayout = FindViewById<LinearLayout>(Resource.Id.addLoanLayout);
+				loanAddLayout.RequestFocus();
+			}
+		}
+
+		protected void LoadInputValue(EditText loanInput)
+		{
+			try {
+				addBalance = NumberFormatter.GetBalanceFromFormat(loanInput.Text);
+			} catch (ArgumentException) {
+				addBalance = 0;
+			}
+			UploadLoanAddInput();
 		}
 
 		protected void CheckDatabaseFile()

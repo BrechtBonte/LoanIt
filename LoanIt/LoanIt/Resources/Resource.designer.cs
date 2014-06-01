@@ -45,7 +45,10 @@ namespace LoanIt
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int ic_action_refresh = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Icon = 2130837505;
 			
 			static Drawable()
 			{
@@ -60,11 +63,26 @@ namespace LoanIt
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050002
+			public const int addLoanLayout = 2131034114;
+			
+			// aapt resource value: 0x7f050000
+			public const int balanceLayout = 2131034112;
+			
 			// aapt resource value: 0x7f050001
 			public const int balanceText = 2131034113;
 			
-			// aapt resource value: 0x7f050000
-			public const int linearLayout1 = 2131034112;
+			// aapt resource value: 0x7f050004
+			public const int loanAddInput = 2131034116;
+			
+			// aapt resource value: 0x7f050005
+			public const int loanHigherButton = 2131034117;
+			
+			// aapt resource value: 0x7f050003
+			public const int loanLowerButton = 2131034115;
+			
+			// aapt resource value: 0x7f050006
+			public const int loanSwitchButton = 2131034118;
 			
 			static Id()
 			{
