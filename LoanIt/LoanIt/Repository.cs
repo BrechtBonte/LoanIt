@@ -63,7 +63,7 @@ namespace LoanIt
 			return owedToUser - owedByUser;
 		}
 
-		public Person GetPersonByName(string name)
+		public Person FindPersonByName(string name)
 		{
 			var table = this.GetConnection().Table<Person>();
 			return table.Where(p => p.Name == name).FirstOrDefault();
@@ -80,6 +80,11 @@ namespace LoanIt
 			var table = this.GetConnection().Table<Person>();
 			return table.OrderBy(p => p.Name).ToArray();
 		}
+
+		public string[] GetPeopleNames()
+		{
+			Person[] people = this.GetAllPeople();
+			return people.Select(p => p.Name).ToArray();
+		}
 	}
 }
-

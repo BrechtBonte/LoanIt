@@ -26,3 +26,4 @@
 /sites/LoanIt/LoanIt/LoanIt/obj/Debug/LoanIt.dll
 /sites/LoanIt/LoanIt/LoanIt/obj/Debug/LoanIt.dll.mdb
 /sites/LoanIt/LoanIt/LoanIt/obj/Debug/res/drawable/ic_action_refresh.png
+/sites/LoanIt/LoanIt/LoanIt/obj/Debug/res/layout/personnameitem.xml

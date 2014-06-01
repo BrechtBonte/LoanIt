@@ -63,6 +63,9 @@ namespace LoanIt
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050009
+			public const int addLoanButton = 2131034121;
+			
 			// aapt resource value: 0x7f050002
 			public const int addLoanLayout = 2131034114;
 			
@@ -81,8 +84,14 @@ namespace LoanIt
 			// aapt resource value: 0x7f050003
 			public const int loanLowerButton = 2131034115;
 			
+			// aapt resource value: 0x7f050008
+			public const int loanNotesInput = 2131034120;
+			
 			// aapt resource value: 0x7f050006
 			public const int loanSwitchButton = 2131034118;
+			
+			// aapt resource value: 0x7f050007
+			public const int personNameInput = 2131034119;
 			
 			static Id()
 			{
@@ -100,6 +109,9 @@ namespace LoanIt
 			// aapt resource value: 0x7f030000
 			public const int Main = 2130903040;
 			
+			// aapt resource value: 0x7f030001
+			public const int PersonNameItem = 2130903041;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -113,14 +125,23 @@ namespace LoanIt
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040002
-			public const int app_name = 2130968578;
+			// aapt resource value: 0x7f040003
+			public const int addLoanButton = 2130968579;
+			
+			// aapt resource value: 0x7f040005
+			public const int app_name = 2130968581;
 			
 			// aapt resource value: 0x7f040001
 			public const int balanceEven = 2130968577;
 			
 			// aapt resource value: 0x7f040000
 			public const int currentBalance = 2130968576;
+			
+			// aapt resource value: 0x7f040002
+			public const int nameHint = 2130968578;
+			
+			// aapt resource value: 0x7f040004
+			public const int notesHint = 2130968580;
 			
 			static String()
 			{

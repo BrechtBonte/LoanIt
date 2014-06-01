@@ -64,6 +64,52 @@ namespace LoanIt
 				}
 			};
 
+			Button addLoanButton = FindViewById<Button>(Resource.Id.addLoanButton);
+			AutoCompleteTextView nameInput = FindViewById<AutoCompleteTextView>(Resource.Id.personNameInput);
+			TextView notesInput = FindViewById<TextView>(Resource.Id.loanNotesInput);
+			addLoanButton.Click += delegate {
+				Color errorCollor = new Color(255, 0, 0, 100);
+				bool allOk = true;
+				if (addBalance == 0) {
+					loanInput.SetBackgroundColor(errorCollor);
+					allOk = false;
+				} else {
+					loanInput.SetBackgroundColor(Color.Transparent);
+				}
+
+				if (nameInput.Text.Length == 0) {
+					nameInput.SetBackgroundColor(errorCollor);
+					allOk = false;
+				} else {
+					nameInput.SetBackgroundColor(Color.Transparent);
+				}
+
+				if (allOk) {
+					Repository repository = Repository.GetInstance();
+					Person person = repository.FindPersonByName(nameInput.Text);
+					if (person == null) {
+						person = new Person(nameInput.Text);
+						repository.InsertObject(person);
+					}
+					Loan loan = new Loan(
+						(int)System.Math.Abs(addBalance),
+						addBalance > 0,
+						person,
+						notesInput.Text
+					);
+					repository.InsertObject(loan);
+
+					UpdateLoanCount();
+					UpdateAutocompleteNames();
+
+					addBalance = 0;
+					UploadLoanAddInput();
+					nameInput.SetText("", TextView.BufferType.Editable);
+					notesInput.SetText("", TextView.BufferType.Editable);
+				}
+			};
+
+			UpdateAutocompleteNames();
 			UploadLoanAddInput();
 		}
 
@@ -113,6 +159,15 @@ namespace LoanIt
 				addBalance = 0;
 			}
 			UploadLoanAddInput();
+		}
+
+		protected void UpdateAutocompleteNames()
+		{
+			Repository repository = Repository.GetInstance();
+
+			AutoCompleteTextView nameInput = FindViewById<AutoCompleteTextView>(Resource.Id.personNameInput);
+			string[] names = repository.GetPeopleNames();
+			nameInput.Adapter = new ArrayAdapter<string>(this, Resource.Layout.PersonNameItem, names);
 		}
 
 		protected void CheckDatabaseFile()
