@@ -53,6 +53,8 @@
     <Compile Include="SQLite.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Helpers\NumberFormatter.cs" />
+    <Compile Include="Helpers\LoanAdapter.cs" />
+    <Compile Include="Helpers\PersonNameAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -65,6 +67,7 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\drawable\ic_action_refresh.png" />
     <AndroidResource Include="Resources\layout\PersonNameItem.xml" />
+    <AndroidResource Include="Resources\layout\Loan.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

@@ -13,6 +13,7 @@ using LoanIt.Helpers;
 using Android.Text;
 using Java.Lang;
 using Android.Views.InputMethods;
+using System.Collections.Generic;
 
 namespace LoanIt
 {
@@ -32,6 +33,7 @@ namespace LoanIt
 
 			UpdateLoanCount();
 			InitAddForm();
+			UpdateRecentLoans();
 		}
 
 		protected void InitAddForm()
@@ -101,6 +103,7 @@ namespace LoanIt
 
 					UpdateLoanCount();
 					UpdateAutocompleteNames();
+					UpdateRecentLoans();
 
 					addBalance = 0;
 					UploadLoanAddInput();
@@ -127,7 +130,7 @@ namespace LoanIt
 
 			if (balance == 0) {
 				balanceText.SetText(Resource.String.balanceEven, TextView.BufferType.Normal);
-				balanceText.SetTextColor(Color.Magenta);
+				balanceText.SetTextColor(Color.Orange);
 			} else {
 				balanceText.SetText(
 					NumberFormatter.FormatBalance(balance),
@@ -135,6 +138,13 @@ namespace LoanIt
 				);
 				balanceText.SetTextColor(balance < 0 ? Color.Red : Color.Green);
 			}
+		}
+
+		protected void UpdateRecentLoans()
+		{
+			ListView recentLoansList = FindViewById<ListView>(Resource.Id.recentLoansList);
+			LoanAdapter loanAdapter = new LoanAdapter(this, Repository.GetInstance().GetRecentLoans(3));
+			recentLoansList.Adapter = loanAdapter;
 		}
 
 		protected void CheckFocus()
@@ -166,8 +176,10 @@ namespace LoanIt
 			Repository repository = Repository.GetInstance();
 
 			AutoCompleteTextView nameInput = FindViewById<AutoCompleteTextView>(Resource.Id.personNameInput);
-			string[] names = repository.GetPeopleNames();
-			nameInput.Adapter = new ArrayAdapter<string>(this, Resource.Layout.PersonNameItem, names);
+			Dictionary<string, int> peopleBalances = repository.GetPersonBalances();
+			string[] peopleNames = new string[peopleBalances.Count];
+			peopleBalances.Keys.CopyTo(peopleNames, 0);
+			nameInput.Adapter = new PersonNameAdapter(this, peopleNames, peopleBalances);
 		}
 
 		protected void CheckDatabaseFile()

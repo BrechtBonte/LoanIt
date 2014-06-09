@@ -5,5 +5,6 @@
 	<string name="nameHint">Name</string>
 	<string name="addLoanButton">Add loan</string>
 	<string name="notesHint">Notes</string>
+	<string name="recentLoansTitle">Recent Loans</string>
 	<string name="app_name">LoanIt</string>
 </resources>

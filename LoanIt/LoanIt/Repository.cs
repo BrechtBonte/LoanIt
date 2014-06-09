@@ -81,10 +81,32 @@ namespace LoanIt
 			return table.OrderBy(p => p.Name).ToArray();
 		}
 
-		public string[] GetPeopleNames()
+		public Dictionary<string, int> GetPersonBalances()
 		{
+			Dictionary<string, int> personBalances = new Dictionary<string, int>();
+
 			Person[] people = this.GetAllPeople();
-			return people.Select(p => p.Name).ToArray();
+			Loan[] loans = this.GetAllLoans();
+			foreach (Person person in people) {
+				var personLoans = loans.Where(l => l.PersonId == person.Id);
+				int owedToUser = personLoans.Where(l => l.IsOwedToUser == true).Sum(l => l.Amount);
+				int owedByUser = personLoans.Where(l => l.IsOwedToUser == false).Sum(l => l.Amount);
+
+				personBalances.Add(person.Name, owedToUser - owedByUser);
+			}
+
+			return personBalances;
+		}
+
+		public Loan[] GetRecentLoans(int count)
+		{
+			return this.GetAllLoans().Take(count).ToArray();
+		}
+
+		public Person GetPersonById(int personId)
+		{
+			var table = this.GetConnection().Table<Person>();
+			return table.Where(p => p.Id == personId).FirstOrDefault();
 		}
 	}
 }
