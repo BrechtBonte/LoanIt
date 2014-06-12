@@ -35,10 +35,10 @@ namespace LoanIt
 			dateAddedText.SetText(loan.DateAdded.ToShortDateString(), TextView.BufferType.Normal);
 
 			loanAmount.SetText(
-				NumberFormatter.FormatBalance(loan.Amount),
+				NumberFormatter.FormatBalance(loan.Amount * (loan.IsOwedToUser ? 1 : -1)),
 				TextView.BufferType.Normal
-			);
-			loanAmount.SetTextColor(loan.Amount < 0 ? Color.Red : Color.Green);
+			);	
+			loanAmount.SetTextColor(loan.IsOwedToUser ? Color.Green : Color.Red);
 
 			return loanView;
 		}
